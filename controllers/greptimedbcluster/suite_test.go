@@ -155,6 +155,14 @@ func (_ *mockEtcdMaintenance) Snapshot(ctx context.Context) (io.ReadCloser, erro
 	return nil, nil
 }
 
+func (_ *mockEtcdMaintenance) SnapshotWithVersion(ctx context.Context) (*clientv3.SnapshotResponse, error) {
+	return &clientv3.SnapshotResponse{}, nil
+}
+
 func (_ *mockEtcdMaintenance) MoveLeader(ctx context.Context, transfereeID uint64) (*clientv3.MoveLeaderResponse, error) {
 	return &clientv3.MoveLeaderResponse{}, nil
+}
+
+func (_ *mockEtcdMaintenance) Downgrade(ctx context.Context, action clientv3.DowngradeAction, version string) (*clientv3.DowngradeResponse, error) {
+	return &clientv3.DowngradeResponse{}, nil
 }

@@ -39,8 +39,6 @@ import (
 
 type StandaloneDeployer struct {
 	Scheme *runtime.Scheme
-
-	client.Client
 	deployer.DefaultDeployer
 }
 
@@ -48,9 +46,7 @@ var _ deployer.Deployer = &StandaloneDeployer{}
 
 func NewStandaloneDeployer(mgr ctrl.Manager) *StandaloneDeployer {
 	return &StandaloneDeployer{
-		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
-
 		DefaultDeployer: deployer.DefaultDeployer{
 			Client: mgr.GetClient(),
 		},
@@ -142,7 +138,7 @@ func (d *StandaloneDeployer) CheckAndUpdateStatus(ctx context.Context, crdObject
 
 	standalone.Status.Replicas = *sts.Spec.Replicas
 	standalone.Status.ReadyReplicas = sts.Status.ReadyReplicas
-	if err = UpdateStatus(ctx, standalone, d.Client); err != nil {
+	if err = UpdateStatus(ctx, standalone, d.DefaultDeployer.Client); err != nil {
 		klog.Errorf("Failed to update status: %s", err)
 	}
 
@@ -160,7 +156,7 @@ func (d *StandaloneDeployer) getStandalone(crdObject client.Object) (*v1alpha1.G
 func (d *StandaloneDeployer) deleteStorage(ctx context.Context, namespace, resourceName string, fsType common.FileStorageType) error {
 	klog.Infof("Deleting standalone storage...")
 
-	claims, err := common.GetPVCs(ctx, d.Client, namespace, resourceName, fsType)
+	claims, err := common.GetPVCs(ctx, d.DefaultDeployer.Client, namespace, resourceName, fsType)
 	if err != nil {
 		return err
 	}

@@ -48,6 +48,11 @@ const (
 	FileStorageTypeCache    FileStorageType = "cache"
 )
 
+// stringPtr returns a pointer to the given string value
+func stringPtr(s string) *string {
+	return &s
+}
+
 // ResourceName returns the resource name for the given name and role kind.
 // The format will be `${name}-${roleKind}-${extraNames[0]}-${extraNames[1]}...`.
 // If extraNames are provided, they will be appended to the resource name. For example,
@@ -120,8 +125,8 @@ func GeneratePodMonitor(namespace, resourceName string, promSpec *v1alpha1.Prome
 			PodMetricsEndpoints: []monitoringv1.PodMetricsEndpoint{
 				{
 					Path:        "/metrics",
-					Port:        "http",
-					Interval:    promSpec.Interval,
+					Port:        stringPtr("http"),
+					Interval:    monitoringv1.Duration(promSpec.Interval),
 					HonorLabels: true,
 				},
 			},

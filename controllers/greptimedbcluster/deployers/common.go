@@ -40,17 +40,13 @@ import (
 // CommonDeployer is the common deployer for all components of GreptimeDBCluster.
 type CommonDeployer struct {
 	Scheme *runtime.Scheme
-
-	client.Client
 	deployer.DefaultDeployer
 }
 
 // NewFromManager creates a new CommonDeployer from controller manager.
 func NewFromManager(mgr ctrl.Manager) *CommonDeployer {
 	return &CommonDeployer{
-		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
-
 		DefaultDeployer: deployer.DefaultDeployer{
 			Client: mgr.GetClient(),
 		},
