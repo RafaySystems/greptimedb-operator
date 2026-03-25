@@ -7,6 +7,7 @@ spec:
   base:
     main:
       image: greptime/greptimedb:latest
+      imagePullPolicy: IfNotPresent
       livenessProbe:
         httpGet:
           path: /health
@@ -106,6 +107,7 @@ spec:
       base:
         main:
           image: greptime/greptimedb:latest
+          imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
               path: /health

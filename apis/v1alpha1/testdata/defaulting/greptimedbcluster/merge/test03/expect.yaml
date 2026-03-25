@@ -7,6 +7,7 @@ spec:
   base:
     main:
       image: greptime/greptimedb:latest
+      imagePullPolicy: IfNotPresent
       livenessProbe:
         failureThreshold: 10
         httpGet:
@@ -60,6 +61,7 @@ spec:
     template:
       main:
         image: greptime/greptimedb:latest
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 10
           httpGet:
@@ -112,6 +114,7 @@ spec:
     template:
       main:
         image: greptime/greptimedb:latest
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 10
           httpGet:
@@ -169,6 +172,7 @@ spec:
     template:
       main:
         image: greptime/greptimedb:latest
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 10
           httpGet:
@@ -225,6 +229,7 @@ spec:
     template:
       main:
         image: greptime/greptimedb:latest
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 10
           httpGet:
@@ -281,6 +286,7 @@ spec:
     template:
       main:
         image: greptime/greptimedb:latest
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 10
           httpGet:

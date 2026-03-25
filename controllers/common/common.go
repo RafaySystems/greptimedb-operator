@@ -151,6 +151,11 @@ func GeneratePodTemplateSpec(kind v1alpha1.RoleKind, template *v1alpha1.PodTempl
 		return nil
 	}
 
+	imagePullPolicy := template.MainContainer.ImagePullPolicy
+	if imagePullPolicy == "" {
+		imagePullPolicy = corev1.PullIfNotPresent
+	}
+
 	spec := &corev1.PodTemplateSpec{
 		ObjectMeta: metav1.ObjectMeta{
 			Annotations: template.Annotations,
@@ -172,7 +177,7 @@ func GeneratePodTemplateSpec(kind v1alpha1.RoleKind, template *v1alpha1.PodTempl
 					LivenessProbe:   template.MainContainer.LivenessProbe,
 					ReadinessProbe:  template.MainContainer.ReadinessProbe,
 					Lifecycle:       template.MainContainer.Lifecycle,
-					ImagePullPolicy: template.MainContainer.ImagePullPolicy,
+					ImagePullPolicy: imagePullPolicy,
 					VolumeMounts:    template.MainContainer.VolumeMounts,
 					SecurityContext: template.MainContainer.SecurityContext,
 				},

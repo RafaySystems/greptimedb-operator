@@ -145,8 +145,9 @@ func (c *CommonBuilder) AddVectorConfigVolume(template *corev1.PodTemplateSpec) 
 
 func (c *CommonBuilder) AddVectorSidecar(template *corev1.PodTemplateSpec, kind v1alpha1.RoleKind) {
 	template.Spec.Containers = append(template.Spec.Containers, corev1.Container{
-		Name:  "vector",
-		Image: c.Cluster.Spec.Monitoring.Vector.Image,
+		Name:            "vector",
+		Image:           c.Cluster.Spec.Monitoring.Vector.Image,
+		ImagePullPolicy: corev1.PullIfNotPresent,
 		Args: []string{
 			"--config", "/etc/vector/vector.yaml",
 		},

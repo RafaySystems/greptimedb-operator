@@ -127,9 +127,10 @@ func (in *GreptimeDBCluster) defaultSpec() *GreptimeDBClusterSpec {
 	var defaultSpec = &GreptimeDBClusterSpec{
 		Base: &PodTemplateSpec{
 			MainContainer: &MainContainerSpec{
-				StartupProbe:   defaultStartupProbe(),
-				LivenessProbe:  defaultLivenessProbe(),
-				ReadinessProbe: defaultReadinessProbe(),
+				StartupProbe:    defaultStartupProbe(),
+				LivenessProbe:   defaultLivenessProbe(),
+				ReadinessProbe:  defaultReadinessProbe(),
+				ImagePullPolicy: corev1.PullIfNotPresent,
 			},
 		},
 		Initializer:    &InitializerSpec{Image: DefaultInitializerImage},
@@ -395,9 +396,10 @@ func (in *GreptimeDBStandalone) defaultSpec() *GreptimeDBStandaloneSpec {
 	var defaultSpec = &GreptimeDBStandaloneSpec{
 		Base: &PodTemplateSpec{
 			MainContainer: &MainContainerSpec{
-				StartupProbe:   defaultStartupProbe(),
-				LivenessProbe:  defaultLivenessProbe(),
-				ReadinessProbe: defaultReadinessProbe(),
+				StartupProbe:    defaultStartupProbe(),
+				LivenessProbe:   defaultLivenessProbe(),
+				ReadinessProbe:  defaultReadinessProbe(),
+				ImagePullPolicy: corev1.PullIfNotPresent,
 			},
 		},
 		HTTPPort:       DefaultHTTPPort,

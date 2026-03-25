@@ -647,8 +647,9 @@ func (b *datanodeBuilder) generatePVCs(spec *v1alpha1.DatanodeSpec) []corev1.Per
 
 func (b *datanodeBuilder) generateInitializer(spec *v1alpha1.DatanodeSpec, groupID *int32) *corev1.Container {
 	initializer := &corev1.Container{
-		Name:  "initializer",
-		Image: b.Cluster.Spec.Initializer.Image,
+		Name:            "initializer",
+		Image:           b.Cluster.Spec.Initializer.Image,
+		ImagePullPolicy: corev1.PullIfNotPresent,
 		Command: []string{
 			"greptimedb-initializer",
 		},

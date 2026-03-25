@@ -281,7 +281,7 @@ type MainContainerSpec struct {
 
 	// Image pull policy.
 	// One of `Always`, `Never`, `IfNotPresent`.
-	// Defaults to `Always` if `:latest` tag is specified, or IfNotPresent otherwise.
+	// When omitted, the operator defaults to IfNotPresent (including for `:latest` images).
 	// Cannot be updated.
 	// More info: `https://kubernetes.io/docs/concepts/containers/images#updating-images`
 	// ImagePullPolicy field is from `corev1.Container.ImagePullPolicy`.

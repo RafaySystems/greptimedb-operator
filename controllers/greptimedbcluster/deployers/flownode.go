@@ -288,8 +288,9 @@ func (b *flownodeBuilder) generatePodTemplateSpec() corev1.PodTemplateSpec {
 
 func (b *flownodeBuilder) generateInitializer() *corev1.Container {
 	initializer := &corev1.Container{
-		Name:  "initializer",
-		Image: b.Cluster.Spec.Initializer.Image,
+		Name:            "initializer",
+		Image:           b.Cluster.Spec.Initializer.Image,
+		ImagePullPolicy: corev1.PullIfNotPresent,
 		Command: []string{
 			"greptimedb-initializer",
 		},
