@@ -585,6 +585,61 @@ _Appears in:_
 | `image` _string_ | The image of the initializer. |  |  |
 
 
+#### KafkaSASL
+
+
+
+KafkaSASL is the SASL authentication configuration for Kafka remote WAL.
+
+
+
+_Appears in:_
+- [KafkaWAL](#kafkawal)
+
+| Field | Description | Default | Validation |
+| --- | --- | --- | --- |
+| `type` _string_ | Type is the SASL mechanism, such as PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512. |  | Enum: [PLAIN SCRAM-SHA-256 SCRAM-SHA-512] <br /> |
+| `username` _string_ | Username is the SASL username. If SecretRef is set, the username from the Secret is used instead. |  |  |
+| `password` _string_ | Password is the SASL password. If SecretRef is set, the password from the Secret is used instead. |  |  |
+| `secretRef` _[KafkaSASLSecretRef](#kafkasaslsecretref)_ | SecretRef is the reference to the Secret that stores the SASL username and password. |  |  |
+
+
+#### KafkaSASLSecretRef
+
+
+
+KafkaSASLSecretRef is the reference to the Secret that stores Kafka SASL credentials.
+
+
+
+_Appears in:_
+- [KafkaSASL](#kafkasasl)
+
+| Field | Description | Default | Validation |
+| --- | --- | --- | --- |
+| `name` _string_ | Name is the name of the Secret. |  |  |
+| `usernameKey` _string_ | UsernameKey is the key of the SASL username in the Secret. |  |  |
+| `passwordKey` _string_ | PasswordKey is the key of the SASL password in the Secret. |  |  |
+
+
+#### KafkaTLS
+
+
+
+KafkaTLS is the TLS configuration for Kafka remote WAL.
+
+
+
+_Appears in:_
+- [KafkaWAL](#kafkawal)
+
+| Field | Description | Default | Validation |
+| --- | --- | --- | --- |
+| `serverCaCertPath` _string_ | ServerCACertPath is the path to the server CA certificate. |  |  |
+| `clientCertPath` _string_ | ClientCertPath is the path to the client certificate for mTLS. |  |  |
+| `clientKeyPath` _string_ | ClientKeyPath is the path to the client private key for mTLS. |  |  |
+
+
 #### KafkaWAL
 
 
@@ -599,6 +654,8 @@ _Appears in:_
 | Field | Description | Default | Validation |
 | --- | --- | --- | --- |
 | `brokerEndpoints` _string array_ | BrokerEndpoints is the list of Kafka broker endpoints. |  |  |
+| `sasl` _[KafkaSASL](#kafkasasl)_ | SASL is the SASL authentication configuration for Kafka remote WAL. |  |  |
+| `tls` _[KafkaTLS](#kafkatls)_ | TLS is the TLS configuration for Kafka remote WAL. |  |  |
 
 
 #### LogFormat
@@ -717,6 +774,7 @@ _Appears in:_
 | `extraArgs` _string array_ | ExtraArgs specifies additional command-line arguments for the container entrypoint.<br />These arguments will be appended to the default command line. |  |  |
 | `workingDir` _string_ | Container's working directory.<br />If not specified, the container runtime's default will be used, which<br />might be configured in the container image.<br />Cannot be updated.<br />WorkingDir field is from `corev1.Container.WorkingDir`. |  |  |
 | `env` _[EnvVar](https://kubernetes.io/docs/reference/generated/kubernetes-api/v/#envvar-v1-core) array_ | List of environment variables to set in the container.<br />Cannot be updated.<br />Env field is from `corev1.Container.Env`. |  |  |
+| `envFrom` _[EnvFromSource](https://kubernetes.io/docs/reference/generated/kubernetes-api/v/#envfromsource-v1-core) array_ | EnvFromSource represents the source of a set of ConfigMaps or Secrets.<br />EnvFrom field is from `corev1.Container.EnvFrom`. |  |  |
 | `livenessProbe` _[Probe](https://kubernetes.io/docs/reference/generated/kubernetes-api/v/#probe-v1-core)_ | Periodic probe of container liveness.<br />Container will be restarted if the probe fails.<br />More info: `https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes`<br />LivenessProbe field is from `corev1.Container.LivenessProbe`. |  |  |
 | `readinessProbe` _[Probe](https://kubernetes.io/docs/reference/generated/kubernetes-api/v/#probe-v1-core)_ | Periodic probe of container service readiness.<br />Container will be removed from service endpoints if the probe fails.<br />ReadinessProbe field is from `corev1.Container.LivenessProbe`.<br />More info: `https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes` |  |  |
 | `startupProbe` _[Probe](https://kubernetes.io/docs/reference/generated/kubernetes-api/v/#probe-v1-core)_ | StartupProbe indicates that the Pod has successfully initialized.<br />If specified, no other probes are executed until this completes successfully.<br />If this probe fails, the Pod will be restarted, just as if the livenessProbe failed.<br />This can be used to provide different probe parameters at the beginning of a Pod's lifecycle,<br />when it might take a long time to load data or warm a cache, than during steady-state operation.<br />This cannot be updated.<br />More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes |  |  |

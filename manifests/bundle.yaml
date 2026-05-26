@@ -1957,6 +1957,31 @@ spec:
                           - name
                           type: object
                         type: array
+                      envFrom:
+                        items:
+                          properties:
+                            configMapRef:
+                              properties:
+                                name:
+                                  default: ""
+                                  type: string
+                                optional:
+                                  type: boolean
+                              type: object
+                              x-kubernetes-map-type: atomic
+                            prefix:
+                              type: string
+                            secretRef:
+                              properties:
+                                name:
+                                  default: ""
+                                  type: string
+                                optional:
+                                  type: boolean
+                              type: object
+                              x-kubernetes-map-type: atomic
+                          type: object
+                        type: array
                       extraArgs:
                         items:
                           type: string
@@ -5343,6 +5368,31 @@ spec:
                                   type: object
                               required:
                               - name
+                              type: object
+                            type: array
+                          envFrom:
+                            items:
+                              properties:
+                                configMapRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
+                                prefix:
+                                  type: string
+                                secretRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
                               type: object
                             type: array
                           extraArgs:
@@ -8742,6 +8792,31 @@ spec:
                                 - name
                                 type: object
                               type: array
+                            envFrom:
+                              items:
+                                properties:
+                                  configMapRef:
+                                    properties:
+                                      name:
+                                        default: ""
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    type: object
+                                    x-kubernetes-map-type: atomic
+                                  prefix:
+                                    type: string
+                                  secretRef:
+                                    properties:
+                                      name:
+                                        default: ""
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    type: object
+                                    x-kubernetes-map-type: atomic
+                                type: object
+                              type: array
                             extraArgs:
                               items:
                                 type: string
@@ -12103,6 +12178,31 @@ spec:
                                   type: object
                               required:
                               - name
+                              type: object
+                            type: array
+                          envFrom:
+                            items:
+                              properties:
+                                configMapRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
+                                prefix:
+                                  type: string
+                                secretRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
                               type: object
                             type: array
                           extraArgs:
@@ -15514,6 +15614,31 @@ spec:
                                   type: object
                               required:
                               - name
+                              type: object
+                            type: array
+                          envFrom:
+                            items:
+                              properties:
+                                configMapRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
+                                prefix:
+                                  type: string
+                                secretRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
                               type: object
                             type: array
                           extraArgs:
@@ -18933,6 +19058,31 @@ spec:
                                     type: object
                                 required:
                                 - name
+                                type: object
+                              type: array
+                            envFrom:
+                              items:
+                                properties:
+                                  configMapRef:
+                                    properties:
+                                      name:
+                                        default: ""
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    type: object
+                                    x-kubernetes-map-type: atomic
+                                  prefix:
+                                    type: string
+                                  secretRef:
+                                    properties:
+                                      name:
+                                        default: ""
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    type: object
+                                    x-kubernetes-map-type: atomic
                                 type: object
                               type: array
                             extraArgs:
@@ -22443,6 +22593,31 @@ spec:
                               - name
                               type: object
                             type: array
+                          envFrom:
+                            items:
+                              properties:
+                                configMapRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
+                                prefix:
+                                  type: string
+                                secretRef:
+                                  properties:
+                                    name:
+                                      default: ""
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  type: object
+                                  x-kubernetes-map-type: atomic
+                              type: object
+                            type: array
                           extraArgs:
                             items:
                               type: string
@@ -25762,6 +25937,31 @@ spec:
                                   - name
                                   type: object
                                 type: array
+                              envFrom:
+                                items:
+                                  properties:
+                                    configMapRef:
+                                      properties:
+                                        name:
+                                          default: ""
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      type: object
+                                      x-kubernetes-map-type: atomic
+                                    prefix:
+                                      type: string
+                                    secretRef:
+                                      properties:
+                                        name:
+                                          default: ""
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      type: object
+                                      x-kubernetes-map-type: atomic
+                                  type: object
+                                type: array
                               extraArgs:
                                 items:
                                   type: string
@@ -27430,6 +27630,41 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              sasl:
+                                properties:
+                                  password:
+                                    type: string
+                                  secretRef:
+                                    properties:
+                                      name:
+                                        type: string
+                                      passwordKey:
+                                        type: string
+                                      usernameKey:
+                                        type: string
+                                    required:
+                                    - name
+                                    - passwordKey
+                                    - usernameKey
+                                    type: object
+                                  type:
+                                    enum:
+                                    - PLAIN
+                                    - SCRAM-SHA-256
+                                    - SCRAM-SHA-512
+                                    type: string
+                                  username:
+                                    type: string
+                                type: object
+                              tls:
+                                properties:
+                                  clientCertPath:
+                                    type: string
+                                  clientKeyPath:
+                                    type: string
+                                  serverCaCertPath:
+                                    type: string
+                                type: object
                             required:
                             - brokerEndpoints
                             type: object
@@ -27654,6 +27889,41 @@ spec:
                         items:
                           type: string
                         type: array
+                      sasl:
+                        properties:
+                          password:
+                            type: string
+                          secretRef:
+                            properties:
+                              name:
+                                type: string
+                              passwordKey:
+                                type: string
+                              usernameKey:
+                                type: string
+                            required:
+                            - name
+                            - passwordKey
+                            - usernameKey
+                            type: object
+                          type:
+                            enum:
+                            - PLAIN
+                            - SCRAM-SHA-256
+                            - SCRAM-SHA-512
+                            type: string
+                          username:
+                            type: string
+                        type: object
+                      tls:
+                        properties:
+                          clientCertPath:
+                            type: string
+                          clientKeyPath:
+                            type: string
+                          serverCaCertPath:
+                            type: string
+                        type: object
                     required:
                     - brokerEndpoints
                     type: object
@@ -29726,6 +29996,31 @@ spec:
                           - name
                           type: object
                         type: array
+                      envFrom:
+                        items:
+                          properties:
+                            configMapRef:
+                              properties:
+                                name:
+                                  default: ""
+                                  type: string
+                                optional:
+                                  type: boolean
+                              type: object
+                              x-kubernetes-map-type: atomic
+                            prefix:
+                              type: string
+                            secretRef:
+                              properties:
+                                name:
+                                  default: ""
+                                  type: string
+                                optional:
+                                  type: boolean
+                              type: object
+                              x-kubernetes-map-type: atomic
+                          type: object
+                        type: array
                       extraArgs:
                         items:
                           type: string
@@ -31394,6 +31689,41 @@ spec:
                         items:
                           type: string
                         type: array
+                      sasl:
+                        properties:
+                          password:
+                            type: string
+                          secretRef:
+                            properties:
+                              name:
+                                type: string
+                              passwordKey:
+                                type: string
+                              usernameKey:
+                                type: string
+                            required:
+                            - name
+                            - passwordKey
+                            - usernameKey
+                            type: object
+                          type:
+                            enum:
+                            - PLAIN
+                            - SCRAM-SHA-256
+                            - SCRAM-SHA-512
+                            type: string
+                          username:
+                            type: string
+                        type: object
+                      tls:
+                        properties:
+                          clientCertPath:
+                            type: string
+                          clientKeyPath:
+                            type: string
+                          serverCaCertPath:
+                            type: string
+                        type: object
                     required:
                     - brokerEndpoints
                     type: object
